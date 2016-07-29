@@ -661,14 +661,16 @@ namespace Microsoft.Zelig.Runtime.TargetPlatform.ARMv7
         {
             Breakpoint( 0xa5a5a5a5 ); 
         }
-        
+
         //--//
 
+        [ChangesInterruptState( true )]
         public static uint EnableInterrupts( )
         {
             return DisableInterruptsWithPriorityLevelLowerOrEqualTo( c_Priority__Lowest );
         }
-        
+
+        [ChangesInterruptState( false )]
         public static uint DisableInterrupts( )
         {
             return DisableInterruptsWithPriorityLevelLowerOrEqualTo( c_Priority__Highest );
